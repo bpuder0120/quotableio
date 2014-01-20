@@ -1,0 +1,17 @@
+<div class="well login-user">
+  <%= form_tag '/session' do |f| %>
+    <div class="form-group">
+      <%= label_tag :phone, "Phone Number" %>
+      <%= text_field_tag :phone, nil, { placeholder: "xxx-xxx-xxxx", class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password, "Password" %>
+      <%= password_field_tag :password, nil, { placeholder: "•••••••••", class: "form-control" } %>
+    </div>
+    
+    <center>
+      <%= submit_tag "Log in", class: "btn btn-success sign-in-user-btn" %>
+    </center>
+  <% end %>
+</div>

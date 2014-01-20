@@ -1,0 +1,43 @@
+<!-- Nav tabs -->
+<ul class="nav nav-tabs main-nav">
+  <li class="active"><a href="#signup" data-toggle="tab">Signup</a></li>
+  <li><a href="#login" data-toggle="tab">Login</a></li>
+  <li><a href="#about" data-toggle="tab">About</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="signup">
+    <div class="well new-user">
+      <%= render 'form' %>
+    </div>
+  </div>
+  <div class="tab-pane" id="login"><%= render template: 'sessions/new' %></div>
+  <div class="tab-pane" id="about"><%= render 'about' %></div>
+</div>
+
+<script>
+
+  window.onload = function(){
+
+    $(".sign-up").on("click", function(e){
+      e.preventDefault();
+      var phone = $("#user_phone").val();
+      if (validPhone(phone)) {
+        $("#new_user").submit();
+      }
+      else {
+        if (!$(".new-user").children().first().is("p")) {
+          $(".new-user").prepend("<p>Invalid phone number! Enter in the format xxx-xxx-xxxx</p>")
+        }
+      }
+    });
+
+  }
+
+ function validPhone(number){
+  var reg = /\d{3}(-)\d{3}(-)\d{4}/;
+  return reg.test(number);
+ }
+
+</script>

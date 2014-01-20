@@ -1,0 +1,16 @@
+.new-user, .login-user {
+  width: 20%;
+  margin: 0 auto;
+  position: relative;
+  top: 3em;
+}
+
+.btn-success.new-user-btn, .sign-in-user-btn, .btn-danger, .btn-warning {
+  margin-top: 1em;
+  width: 70%;
+}
+
+.main-nav {
+  width: 19%;
+  margin: 5em auto 0 auto;
+}

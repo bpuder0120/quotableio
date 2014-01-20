@@ -1,0 +1,14 @@
+<div class="well new-user">
+  <center>
+  <h1>Edit</h1>
+  </center>
+  <br/>
+  <%= render 'form' %>
+  <center>
+  <% if @user.texting %>
+    <%= button_to "Disable Texts", {action: "disable", remote: true}, {class: 'btn btn-danger'} %>
+  <% else %>
+    <%= button_to "Enable Texts", {action: "disable", remote: true}, {class: 'btn btn-warning'} %>
+  <% end %>
+  </center>
+</div>

@@ -1,0 +1,29 @@
+
+  <% if @message %>
+    <%= @message %>
+  <% end %>
+  <%= form_for @user do |f| %>
+
+    <div class="form-group">
+      <%= f.label :phone, "Phone Number" %>
+      <%= f.text_field :phone, placeholder: "501-259-3356", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_digest, "Password" %>
+      <%= f.password_field :password_digest, placeholder: "•••••••••", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :category %>
+      <%= f.select :category, options_for_select(@categories), {}, class: "form-control" %>
+    </div>
+
+  <center>
+    <% if params[:action] == 'edit' %>
+      <%= f.submit "Update Profile", class: "sign-up btn btn-success new-user-btn" %>
+    <% else %>
+      <%= f.submit "Sign Up", class: "sign-up btn btn-success new-user-btn" %>
+    <% end %>
+  </center>
+<% end %>
