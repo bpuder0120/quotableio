@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
 
     @client = Twilio::REST::Client.new account_sid, auth_token
 
-    @client.account.messages.create({
-      :from => '+17879190827', 
+    @client.account.sms.messages.create({
+      :from => '+13125481314', 
       :to => number, 
       :body => "\"#{response['quote']}\"\t- #{response['author']}\n/Brought to you by Quotable.io/" 
     })
