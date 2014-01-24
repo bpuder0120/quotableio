@@ -12,5 +12,28 @@
 
 .main-nav {
   width: 19%;
-  margin: 5em auto 0 auto;
+  margin: 2em auto 0 auto;
+
+}
+
+.qod {
+  position: fixed;
+  bottom: 3em;
+  margin: 0 auto;
+  width: 60%;
+  left: 20%;
+  text-align: center;
+  color: white;
+  background-color: cornflowerblue;
+
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 0; 
+  line-height: 0;
+  color: white;
+  background-color: cornflowerblue;
+  margin: 0 auto;
+  width: 20%;
 }

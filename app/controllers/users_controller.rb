@@ -19,8 +19,9 @@ class UsersController < ApplicationController
     end
 
     @user.category = category
-    
+
     if @user.save
+      session[:user_id] = @user.id
       redirect_to edit_user_path(@user)
     else
       @message = "Invalid! Try again. If you already have an account, click Login."

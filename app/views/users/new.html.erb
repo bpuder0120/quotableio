@@ -1,3 +1,7 @@
+<div class="title">
+  <h1>Quotable</h1>
+</div>
+
 <!-- Nav tabs -->
 <ul class="nav nav-tabs main-nav">
   <li class="active"><a href="#signup" data-toggle="tab">Signup</a></li>
@@ -14,6 +18,13 @@
   </div>
   <div class="tab-pane" id="login"><%= render template: 'sessions/new' %></div>
   <div class="tab-pane" id="about"><%= render 'about' %></div>
+</div>
+
+
+<div class="qod">
+<% q = Quote.where(category: "inspire").last %>
+<h3>"<%= q.body %>"</h3>
+<h4><em>- <%= q.author %></em>
 </div>
 
 <script>
