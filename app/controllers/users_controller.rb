@@ -8,7 +8,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(phone: params[:user][:phone], category: (params[:user][:category]).downcase, password: params[:user][:password_digest], password_confirmation: params[:user][:password_digest])
+    @user = User.new(phone: params[:user][:phone], password: params[:user][:password_digest], password_confirmation: params[:user][:password_digest])
+
+    category = params[:user][:category].downcase
+
+    if category == "business"
+      category = "management"
+    elsif category == "inspiration"
+      category = "inspire"
+    end
+
+    @user.category = category
+    
     if @user.save
       redirect_to edit_user_path(@user)
     else

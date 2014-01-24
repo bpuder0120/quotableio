@@ -4,31 +4,17 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :phone
   has_secure_password
 
-  def get_quote
-    category = self.category
-    if category == "business"
-      category = "management"
-    elsif category == "inspiration"
-      category = "inspire"
-    end
-    HTTParty.get("http://api.theysaidso.com/qod?category=#{category}")
-  end
-
-  def send_message
-    response = self.get_quote["contents"]
+  def send_message(quote)
     number = "+1#{self.phone.gsub('-', '')}"
 
-    body = "\"#{response['quote']}\"\t- #{response['author']}\n/Brought to you by Quotable.io/" 
+    body = "\"#{quote.body}\" - #{quote.author} //Brought to you by Brad Puder//"
 
-    account_sid = 'AC10d2628fdf4415d5df94911684ec4610' 
-    auth_token = '92d7f0a61edef00438529e12edd8eb0c' 
-
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new ENV['account_sid'], ENV['auth_token']
 
     @client.account.sms.messages.create({
       :from => '+13125481314', 
       :to => number, 
-      :body => "\"#{response['quote']}\"\t- #{response['author']}\n/Brought to you by Quotable.io/" 
+      :body => body
     })
 
   end
