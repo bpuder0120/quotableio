@@ -13,7 +13,7 @@ class Quote < ActiveRecord::Base
 
   def self.find_users
     Quote.all.last(5).each do |quote|
-      users = User.where(category: quote.category)
+      users = User.where(category: quote.category, texting: true)
       users.each do |user|
         user.send_message(quote)
       end
