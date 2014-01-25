@@ -17,11 +17,9 @@
 }
 
 .qod {
-  position: fixed;
-  bottom: 3em;
-  margin: 0 auto;
+  margin: 5em auto 0 auto;
+  padding: 0.1em;
   width: 60%;
-  left: 20%;
   text-align: center;
   color: white;
   background-color: cornflowerblue;
