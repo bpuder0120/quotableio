@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'twilio-ruby'
+gem "twilio-ruby", "3.11.0"
 gem 'pry-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

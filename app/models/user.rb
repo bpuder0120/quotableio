@@ -7,14 +7,16 @@ class User < ActiveRecord::Base
   def send_message(quote)
     number = "+1#{self.phone.gsub('-', '')}"
 
-    body = "\"#{quote.body}\" - #{quote.author} //Brought to you by Brad Puder//"
+    body = "\"#{quote.body}\" - #{quote.author}"
+
+    tagline = " //Brought to you by Brad Puder//"
 
     @client = Twilio::REST::Client.new ENV['account_sid'], ENV['auth_token']
-
-    @client.account.sms.messages.create({
+    
+    @client.account.messages.create({
       :from => '+13125481314', 
       :to => number, 
-      :body => body
+      :body => body + tagline 
     })
 
   end
