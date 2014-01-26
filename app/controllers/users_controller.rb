@@ -34,9 +34,28 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @categories = ["Inspiration", "Business", "Sports", "Life", "Funny", "Love"]
+    @category = @user.category.capitalize
+    if @category == "Inspire"
+      @category = "Inspiration"
+    elsif @category == "Management"
+      @category = "Business"
+    end
   end
 
   def update
+    @user = User.find(params[:id])
+    category = params[:user][:category].downcase
+
+    if category == "business"
+      category = "management"
+    elsif category == "inspiration"
+      category = "inspire"
+    end
+
+    @user.category = category
+
+    @user.save
+    redirect_to edit_user_path(@user)
   end
 
   def disable
