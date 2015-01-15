@@ -1,30 +1,55 @@
-<div class="title">
-  <h1>Quotable</h1>
-</div>
-
-<!-- Nav tabs -->
-<ul class="nav nav-tabs main-nav">
-  <li class="active"><a href="#signup" data-toggle="tab">Signup</a></li>
-  <li><a href="#login" data-toggle="tab">Login</a></li>
-  <li><a href="#about" data-toggle="tab">About</a></li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="signup">
-    <div class="well new-user">
-      <%= render 'form' %>
+<div class="container">
+  <div class="row title-row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="title">
+        <h1>Quotable</h1>
+      </div>
     </div>
   </div>
-  <div class="tab-pane" id="login"><%= render template: 'sessions/new' %></div>
-  <div class="tab-pane" id="about"><%= render 'about' %></div>
-</div>
 
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
 
-<div class="qod">
-<% q = Quote.where(category: "inspire").last %>
-<h3>"<%= q.body %>"</h3>
-<h4><em>- <%= q.author %></em>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs main-nav">
+        <li class="active"><a href="#signup" data-toggle="tab">Signup</a></li>
+        <li><a href="#login" data-toggle="tab">Login</a></li>
+        <li><a href="#about" data-toggle="tab">About</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="signup">
+          <div class="well new-user">
+            <%= render 'form' %>
+          </div>
+        </div>
+        <div class="tab-pane" id="login"><%= render template: 'sessions/new' %></div>
+        <div class="tab-pane" id="about"><%= render 'about' %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row title-row qod-row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="qod">
+        <% q = Quote.where(category: "inspire").last %>
+        <h4 class="qod-body">"<%= q.body %>"</h4>
+        <h4><em>- <%= q.author %></em></h4>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>

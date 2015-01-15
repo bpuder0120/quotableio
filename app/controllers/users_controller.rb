@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      @user.send_message("Thanks for signing up for Quotable! You'll receive a quote at 10am CT every day, but here's one to start off with:", false)
+      quote = Quote.find_by(category: @user.category)
+      @user.send_message(quote)
       redirect_to edit_user_path(@user)
     else
       @message = "Invalid! Try again. If you already have an account, click Login."
